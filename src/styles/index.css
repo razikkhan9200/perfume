@@ -1,0 +1,72 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F4F4F7;
+  --surface: #FFFFFF;
+  --card: #FFFFFF;
+  --border: #E6E6EC;
+
+  --accent: #CFC5FF;
+  --accent-lt: #B8A9FF;
+
+  --text: #1E1E24;
+  --muted: #8C8C98;
+
+  --success: #7EE7B8;
+  --warning: #FFB86B;
+  --danger: #FF8A8A;
+
+  --lavender: #CFC5FF;
+  --violet: #B8A9FF;
+  --dark: #1E1E24;
+
+  --glow: rgba(207,197,255,0.25);
+  --glowStrong: rgba(207,197,255,0.45);
+}
+
+/* @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased leading-relaxed;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button, input, textarea, select {
+    font-family: inherit;
+  }
+
+  ::-webkit-scrollbar         { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track   { @apply bg-bg; }
+  ::-webkit-scrollbar-thumb   { @apply bg-border rounded; }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease both;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+} */
