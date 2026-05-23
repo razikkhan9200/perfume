@@ -1,22 +1,31 @@
-import { Navigate, useLocation } from 'react-router-dom'
-import { runAuthMiddleware } from '../token/authMiddleware'
-import { useAuth } from '../hooks/useAuth'
-import { ROUTES } from '../constants/routes'
-import Spinner from '../components/ui/Spinner'
+/**
+ * PrivateRoute.jsx
+ * ─────────────────────────────────────────────
+ * Sirf logged-in users access kar sakte hain.
+ * Not logged in → /login redirect.
+ */
+
+import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { ROUTES } from "../constants/routes";
+import Spinner from "../components/ui/Spinner";
 
 const PrivateRoute = ({ children }) => {
-  const { isLoading } = useAuth()
-  const location      = useLocation()
+  const { isAuthenticated, isLoading } = useAuth();
+  const location = useLocation();
 
-  if (isLoading) return <Spinner fullScreen />
+  // console.log("PRIVATE AUTH:", isAuthenticated);
 
-  const { allowed } = runAuthMiddleware()
+  // LOADING
+  if (isLoading) return <Spinner fullScreen />;
 
-  if (!allowed) {
-    return <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />
+  // NOT LOGIN
+  if (!isAuthenticated) {
+    return <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />;
   }
 
-  return children
-}
+  // LOGIN SUCCESS
+  return children;
+};
 
-export default PrivateRoute
+export default PrivateRoute;

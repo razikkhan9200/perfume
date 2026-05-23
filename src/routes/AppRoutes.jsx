@@ -1,32 +1,31 @@
 /**
  * AppRoutes.jsx
- * Central routing configuration for the entire application.
+ * Application routing configuration.
  */
 
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { ROUTES } from '../constants/routes'
+import { Routes, Route, Navigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
-// Route guards
-import PrivateRoute from './PrivateRoute'
-import PublicRoute  from './PublicRoute'
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
-// Layouts
-import MainLayout from '../layouts/MainLayout'
-import AuthLayout from '../layouts/AuthLayout'
+import MainLayout from "../layouts/MainLayout";
+import AuthLayout from "../layouts/AuthLayout";
 
-// Pages
-import LoginPage     from '../pages/Login/LoginPage'
-import DashboardPage from '../pages/Dashboard/DashboardPage'
-import ProfilePage   from '../pages/Profile/ProfilePage'
-import SettingsPage  from '../pages/Settings/SettingsPage'
-import NotFoundPage  from '../pages/NotFound/NotFoundPage'
+import LoginPage from "../pages/Login/LoginPage";
+import DashboardPage from "../pages/Dashboard/DashboardPage";
+import ProfilePage from "../pages/Profile/ProfilePage";
+import SettingsPage from "../pages/Settings/SettingsPage";
+import NotFoundPage from "../pages/NotFound/NotFoundPage";
 
 const AppRoutes = () => (
   <Routes>
-    {/* Root redirect */}
-    <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.DASHBOARD} replace />} />
+    <Route
+      path={ROUTES.HOME}
+      element={<Navigate to={ROUTES.DASHBOARD} replace />}
+    />
 
-    {/* ── Public Routes (unauthenticated only) ── */}
+    {/* PUBLIC */}
     <Route element={<AuthLayout />}>
       <Route
         path={ROUTES.LOGIN}
@@ -38,7 +37,7 @@ const AppRoutes = () => (
       />
     </Route>
 
-    {/* ── Private Routes (authenticated only) ── */}
+    {/* PRIVATE */}
     <Route element={<MainLayout />}>
       <Route
         path={ROUTES.DASHBOARD}
@@ -66,9 +65,8 @@ const AppRoutes = () => (
       />
     </Route>
 
-    {/* 404 */}
-    <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
+    <Route path="*" element={<NotFoundPage />} />
   </Routes>
-)
+);
 
-export default AppRoutes
+export default AppRoutes;

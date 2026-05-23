@@ -1,21 +1,28 @@
-import { Navigate } from 'react-router-dom'
-import { runAuthMiddleware } from '../token/authMiddleware'
-import { useAuth } from '../hooks/useAuth'
-import { ROUTES } from '../constants/routes'
-import Spinner from '../components/ui/Spinner'
+/**
+ * PublicRoute.jsx
+ * ─────────────────────────────────────────────
+ * Already logged in → dashboard redirect.
+ * Not logged in → login page dikhao.
+ */
+
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { ROUTES } from "../constants/routes";
+import Spinner from "../components/ui/Spinner";
 
 const PublicRoute = ({ children }) => {
-  const { isLoading } = useAuth()
+  const { isAuthenticated, isLoading } = useAuth();
+  // console.log("PUBLIC AUTH:", isAuthenticated);
 
-  if (isLoading) return <Spinner fullScreen />
-
-  const { allowed } = runAuthMiddleware()
-
-  if (allowed) {
-    return <Navigate to={ROUTES.DASHBOARD} replace />
+  // LOADING
+  if (isLoading) return <Spinner fullScreen />;
+  // ALREADY LOGIN
+  if (isAuthenticated) {
+    return;
+    <Navigate to={ROUTES.DASHBOARD} replace />;
   }
 
-  return children
-}
+  return children;
+};
 
-export default PublicRoute
+export default PublicRoute;

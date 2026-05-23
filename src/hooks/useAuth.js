@@ -1,37 +1,11 @@
 /**
  * useAuth.js
- * ------------------------------------------------------
- * Custom authentication hook shortcut.
+ * ─────────────────────────────────────────────
+ * AuthContext ka shortcut hook.
  *
- * Purpose:
- * Provides simplified access to AuthContext
- * throughout the application.
- *
- * Why use this?
- * Instead of:
- *   useAuthContext()
- *
- * Components can simply use:
- *   useAuth()
- *
- * Benefits:
- * - Cleaner imports
- * - Better readability
- * - Centralized auth hook export
+ * Usage:
+ *   const { user, login, logout, isAuthenticated } = useAuth()
  */
 
-import { useAuthContext } from '../context/AuthContext'
-
-/**
- * Authentication hook alias.
- *
- * Re-exports AuthContext hook using
- * a shorter and cleaner name.
- *
- * Example:
- * const { user, login, logout } = useAuth()
- */
-export const useAuth = useAuthContext
-
-// Default export for flexible importing
-export default useAuth
+export { useAuth } from "../context/AuthContext"
+export { useAuth as default } from "../context/AuthContext"
