@@ -1,92 +1,87 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════════════
+   PERFUME LAVENDER — CENTRALIZED COLOR SYSTEM
+   ═══════════════════════════════════════════════════════════ */
 :root {
-  --bg: #F4F4F7;
-  --surface: #FFFFFF;
-  --card: #FFFFFF;
-  --border: #E6E6EC;
+  /* Backgrounds */
+  --bg:           #F4F4F7;
+  --surface:      #FFFFFF;
+  --card:         #FFFFFF;
+  --card-alt:     #FAFAFC;
+  --card-subtle:  #F7F5FF;
 
-  --accent: #CFC5FF;
-  --accent-lt: #B8A9FF;
+  /* Borders */
+  --border:       #E6E6EC;
+  --border-soft:  #ECECF2;
+  --border-hover: #CFC5FF;
 
-  --text: #1E1E24;
-  --muted: #8C8C98;
+  /* Accent — Lavender/Violet */
+  --accent:       #CFC5FF;
+  --accent-lt:    #B8A9FF;
+  --accent-deep:  #7C6CF2;
+  --accent-muted: #A995EA;
 
-  --success: #7EE7B8;
-  --warning: #FFB86B;
-  --danger: #FF8A8A;
+  /* Text */
+  --text:         #1E1E24;
+  --text-primary: #111827;
+  --text-heading: #19191F;
+  --text-muted:   #8C8C98;
+  --text-soft:    #9AA0B4;
+  --text-faint:   #8B8FA3;
 
-  --lavender: #CFC5FF;
-  --violet: #B8A9FF;
-  --dark: #1E1E24;
+  /* Status */
+  --success:      #7EE7B8;
+  --success-bg:   #EDFFF4;
+  --success-text: #0D7451;
+  --warning:      #FFB86B;
+  --warning-bg:   #FFF9EE;
+  --warning-text: #9A6600;
+  --danger:       #FF8A8A;
+  --danger-bg:    #FFF4F4;
+  --danger-text:  #C53030;
 
-  --glow: rgba(207,197,255,0.25);
-  --glowStrong: rgba(207,197,255,0.45);
+  /* Chart fills */
+  --chart-1:      #A995EA;
+  --chart-2:      #FDE9C7;
+  --chart-3:      #F8D7D7;
+
+  /* Gradients */
+  --grad-accent-from: #CFC5FF;
+  --grad-accent-to:   #B8A9FF;
+  --grad-hero-from:   #EDEAFF;
+  --grad-hero-via:    #F4F4F7;
+  --grad-hero-to:     #EBF9F3;
+
+  /* Glow */
+  --glow:         rgba(207,197,255,0.25);
+  --glowStrong:   rgba(207,197,255,0.45);
+  --glow-avatar:  rgba(184,169,255,0.18);
+
+  /* Named aliases */
+  --lavender:     #CFC5FF;
+  --violet:       #B8A9FF;
+  --dark:         #1E1E24;
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
+/* ═══════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════ */
+::-webkit-scrollbar        { width: 0px; height: 0px; display: none; }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-bg text-text font-sans antialiased leading-relaxed;
-  }
-
-  a {
-    color: inherit;
-  }
-
-  button, input, textarea, select {
-    font-family: inherit;
-  }
-
-  ::-webkit-scrollbar         { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track   { @apply bg-bg; }
-  ::-webkit-scrollbar-thumb   { @apply bg-border rounded; }
-}
-
-@layer utilities {
-  .animate-fade-up {
-    animation: fadeUp 0.5s ease both;
-  }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-} */
-
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE GRID
+   ═══════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .sales-cards-grid {
-    grid-template-columns: 1fr !important;
-  }
+  .sales-cards-grid { grid-template-columns: 1fr !important; }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   CHART GRID
+   ═══════════════════════════════════════════════════════════ */
 .recharts-cartesian-grid-horizontal line {
   stroke-dasharray: 6 6;
-  stroke: #ECECF2;
+  stroke: var(--border-soft);
 }

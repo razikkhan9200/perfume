@@ -19,50 +19,22 @@ export const AuthProvider = ({ children }) => {
   // App loading state
   const [isLoading, setIsLoading] = useState(true);
 
+  const [tokenExpired, setTokenExpired] = useState(false);
+
   // ===========================================
   // CHECK TOKEN ON PAGE REFRESH
   // ===========================================
 
   useEffect(() => {
-    const restoreSession = async () => {
-      const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
-
-      // console.log("INIT TOKEN:", token);
-
-      if (token) {
-        setUser({
-          token,
-        });
-      }
-
-      setIsLoading(false);
-
-      // try {
-      //   // Backend se verify karo token valid hai ya nahi
-      //   const restoredUser = await authService.getMe();
-      //   setUser(restoredUser);
-      // } catch {
-      //   // Token invalid/expired → clear karo
-      //   authService.logout();
-      // } finally {
-      //   setIsLoading(false);
-      // }
-    };
-
-    restoreSession();
+    const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
+    console.log("token",token)
+    if (token) setUser({ token });
+    setIsLoading(false);
   }, []);
 
   // ===========================================
   // LOGIN
   // ===========================================
-
-  // const login = async (email, password) => {
-  //   console.log("hello");
-  //   const { user: loggedInUser } = await authService.login(email, password);
-  //   console.log("hello2", loggedInUser);
-  //   setUser(loggedInUser);
-  //   return loggedInUser;
-  // };
 
   const login = async (email, password) => {
     try {
@@ -95,8 +67,15 @@ export const AuthProvider = ({ children }) => {
   // App load hone par token check karo
   // ===========================================
 
-    const isAuthenticated = !!user;
+  // Token expire pe: clear + modal show
+  const forceLogout = () => {
+    localStorage.removeItem(STORAGE_KEYS.TOKEN);
+    // localStorage.removeItem(STORAGE_KEYS.USER);
+    setUser(null);
+    setTokenExpired(true); // ← modal open
+  };
 
+  const dismissExpiredModal = () => setTokenExpired(false);
 
   return (
     <AuthContext.Provider
@@ -106,6 +85,9 @@ export const AuthProvider = ({ children }) => {
         isLoading,
         login,
         logout,
+        tokenExpired,
+        forceLogout,
+        dismissExpiredModal,
       }}
     >
       {children}

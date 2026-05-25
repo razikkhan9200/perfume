@@ -36,11 +36,8 @@ const authService = {
       // Token save karo
       localStorage.setItem(STORAGE_KEYS.TOKEN, token);
 
-      // User profile fetch karo
-      // const user = await this.getMe()
-      // localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user))
+      
 
-      // return { user, token }
       return { token };
     } catch (error) {
        console.log("LOGIN API ERROR:", error);
@@ -49,16 +46,11 @@ const authService = {
     }
   },
 
-  // ── GET CURRENT USER ───────────────────────
-  // async getMe() {
-  //   const res = await api.get("/admin/auth");
-  //   return res.data;
-  // },
+
 
   // ── LOGOUT ─────────────────────────────────
   logout() {
     localStorage.removeItem(STORAGE_KEYS.TOKEN);
-    // localStorage.removeItem(STORAGE_KEYS.USER);
   },
 };
 

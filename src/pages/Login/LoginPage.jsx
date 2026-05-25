@@ -63,7 +63,7 @@ const LoginPage = () => {
       navigate(from, {replace: true,});
     } catch (err) {
        console.log(err);
-      setError(err?.response?.data?.message || "Invalid email ya password.");
+      setError(err?.response?.data?.message || "Invalid email or password.");
     } finally {
       setLoading(false);
     }

@@ -50,6 +50,25 @@ export const ROUTES = {
    */
   DASHBOARD: '/dashboard',
 
+  
+  /**
+   * Products page.
+   */
+  PRODUCTS: '/products',
+
+
+  
+  /**
+   * Order page.
+   */
+  ORDER: '/order',
+
+    /**
+   * Customer page.
+   */
+  CUSTOMER: '/customer',
+
+
   /**
    * User profile page.
    *

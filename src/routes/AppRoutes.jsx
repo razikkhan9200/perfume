@@ -17,6 +17,9 @@ import DashboardPage from "../pages/Dashboard/DashboardPage";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import SettingsPage from "../pages/Settings/SettingsPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
+import ProductsPage from "../pages/Products/ProductsPage";
+import OrdersPage from "../pages/order";
+import CustomersPage from "../pages/Customer";
 
 const AppRoutes = () => (
   <Routes>
@@ -42,9 +45,35 @@ const AppRoutes = () => (
       <Route
         path={ROUTES.DASHBOARD}
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <DashboardPage />
-          </PrivateRoute>
+          //  </PrivateRoute>
+        }
+      />
+      <Route
+        path={ROUTES.PRODUCTS}
+        element={
+          // <PrivateRoute>
+            <ProductsPage />
+          // </PrivateRoute>
+        }
+      />
+
+      <Route
+        path={ROUTES.CUSTOMER}
+        element={
+          // <PrivateRoute>
+            <CustomersPage />
+          // </PrivateRoute>
+        }
+      />
+
+      <Route
+        path={ROUTES.ORDER}
+        element={
+          // <PrivateRoute>
+            <OrdersPage />
+          // </PrivateRoute>
         }
       />
       <Route
@@ -63,6 +92,7 @@ const AppRoutes = () => (
           </PrivateRoute>
         }
       />
+   
     </Route>
 
     <Route path="*" element={<NotFoundPage />} />
